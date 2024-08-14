@@ -1,0 +1,21 @@
+
+
+// User function Template for Java//User function Template for Java
+class Solution {
+    
+    
+    
+    public static void fun(int index,int sum,ArrayList<Integer> arr,ArrayList<Integer> ans){
+        if(index==arr.size()){
+            ans.add(sum);
+            return;
+        }
+        fun(index+1,sum+arr.get(index),arr,ans);
+        fun(index+1,sum,arr,ans);
+    }
+    ArrayList<Integer> subsetSums(ArrayList<Integer> arr, int n) {
+        ArrayList<Integer> ans=new ArrayList<>();
+        fun(0,0,arr,ans);
+        return ans;
+    }
+}
