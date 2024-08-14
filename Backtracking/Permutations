@@ -1,0 +1,28 @@
+class Solution {
+    
+    public static void fun(int index,List<List<Integer>> res,ArrayList<Integer> ds,int nums[]){
+     if(index==nums.length){
+        for(int i=0;i<nums.length;i++){
+            ds.add(nums[i]);
+        }
+        res.add(new ArrayList<>(ds));
+        ds.clear();
+     }
+     for(int i=index;i<nums.length;i++){
+        swap(nums,index,i);
+        fun(index+1,res,ds,nums);
+        swap(nums,index,i);
+     }
+    }
+    public static void swap(int nums[],int i,int j){
+        int temp=nums[i];
+        nums[i]=nums[j];
+        nums[j]=temp;
+    }
+    public List<List<Integer>> permute(int[] nums) {
+       List<List<Integer>> res=new ArrayList<>();
+       ArrayList<Integer> ds=new ArrayList<>();
+       fun(0,res,ds,nums);
+       return res;
+    }
+}
